@@ -4,26 +4,17 @@ use std::path::Path;
 
 fn main() {
     #[cfg(not(debug_assertions))]
-        Notification::new()
+    Notification::new()
         .summary("Delete Node Modules")
         .body("Started deletion of node modules folder")
         .show()
         .unwrap();
     let mut counter = 0;
-    check_folder(
-        Path::new("./"),
-        &mut counter,
-    );
+    check_folder(Path::new("./"), &mut counter);
     #[cfg(not(debug_assertions))]
     Notification::new()
         .summary("Delete Node Modules")
-        .body(
-            format!(
-                "Successfully deleted {} node_modules folders",
-                counter
-            )
-            .as_str(),
-        )
+        .body(format!("Successfully deleted {} node_modules folders", counter).as_str())
         .show()
         .unwrap();
 }
